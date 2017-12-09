@@ -1,17 +1,118 @@
-h2{
-    margin: 0;
-    padding: 0 ;
-}
-*{
+h2 {
     margin: 0;
     padding: 0;
 }
-a{
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
     text-decoration: none;
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
 }
-ol,ul{
+
+ol,
+ul {
     list-style: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+/* 边栏样式 */
+
+.lt_aside {
+    width: 180px;
+    background-color: #222d32;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.lt_aside .header {
+    background-color: skyblue;
+    text-align: center;
+    height: 50px;
+}
+
+.lt_aside .header a {
+    font-size: 20px;
+    color: white;
+    line-height: 50px;
+}
+
+.lt_aside .user {
+    padding: 30px 20px;
+}
+
+.lt_aside .user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.lt_aside .user span {
+    font-size: 13px;
+    color: white;
+}
+
+.lt_aside .content ol{
+    display: none;
+}
+
+
+.lt_aside .content li a {
+    padding-left: 30px;
+    font-size: 14px;
+    line-height: 40px;
+    color: gray;
+    display: block;
+}
+
+.lt_aside .content li ol a {
+    line-height: 30px;
+    font-size: 12px;
+    padding-left: 40px;
+}
+
+
+/* 边栏样式 */
+
+
+/* 主体样式 */
+
+.zhutu {
+    height: 100%;
+    padding-left: 180px;
+    background-color: white;
+}
+
+.zhutu.dontai {
+    padding-left: 0px;
+}
+
+.zhutu .dingtiao {
+    height: 50px;
+    background-color: yellowgreen;
+    padding: 0 20px;
+}
+
+.zhutu .dingtiao span {
+    line-height: 50px;
+    color: white;
+    font-size: 18px;
+}
+
+.zhutu .shujubiao {
+    padding: 30px 20px 0;
+    
 }
