@@ -8,6 +8,8 @@
     <title>Document</title>
     <!-- 导入bootstrap的css -->
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <!-- 引入bs插件的css样式 -->
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
     <!-- 导入样式 -->
     <link rel="stylesheet" href="./css/base.css">
     <style>
@@ -24,7 +26,8 @@
         .lt_aside .content ol {
             display: block;
         }
-        .lt_aside .content ol li:first-child a{
+
+        .lt_aside .content ol li:first-child a {
             color: white;
         }
     </style>
@@ -87,6 +90,26 @@
                     一级分类
                 </li>
             </ol>
+            <div class="biaoge">
+                <a class="btn btn-default" href="#" role="button" data-toggle="modal" data-target=".bs-example-modal-lg">添加分类</a>
+            </div>
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>分类名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>户外管</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 分页控件 -->
+            <ul id='pagintor'></ul>
         </div>
     </div>
     <!-- 模态框 -->
@@ -112,6 +135,33 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <!-- 第二个模态框 -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">添加分类</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="firstForm">
+                        <div class="form-group">
+                            <input type="text" name="categoryName" id="exampleInputEmail1" placeholder="请输入一级分类名称" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" form="firstForm" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </body>
 
 </html>
@@ -119,5 +169,22 @@
 <script src="./lib/jquery/jquery.min.js"></script>
 <!-- 导入BS文件 -->
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<!-- 引入bs表单插件 -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!-- 导入分页插件 -->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<!-- 导入模板引擎 -->
+<script src="./lib/artTemplate/template.js"></script>
+<!-- 创建一个模板 -->
+<script id="template" type="text/html">
+    {{each rows as vlaue i}}
+    <tr>
+        <td>{{i+1}}</td>
+        <td>{{vlaue.categoryName}}</td>
+    </tr>
+    {{/each}}
+</script>
 <!-- 引入公共js样式 -->
 <script src="./js/common.js"></script>
+<!-- 引入自己的js文件 -->
+<script src="./js/first.js"></script>

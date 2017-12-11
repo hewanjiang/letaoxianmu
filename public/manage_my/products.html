@@ -8,6 +8,8 @@
     <title>Document</title>
     <!-- 导入bootstrap的css -->
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <!-- 表单验证css样式 -->
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
     <!-- 导入样式 -->
     <link rel="stylesheet" href="./css/base.css">
     <style>
@@ -77,6 +79,38 @@
                     商品管理
                 </li>
             </ol>
+            <div class="biaoge">
+                <a class="btn btn-default" href="#" role="button" data-toggle="modal" data-target=".btn-add">添加商品</a>
+            </div>
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>商品名称</th>
+                        <th>商品描述</th>
+                        <th>商品库存</th>
+                        <th>商品尺寸</th>
+                        <th>商品状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>户外管</td>
+                        <td>户外管</td>
+                        <td>户外管</td>
+                        <td>户外管</td>
+                        <td>户外管</td>
+                        <td>
+                            <button class="btn btn-danger">下架</button>
+                            <button class="btn btn-primary">编辑</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul id="pagintor"></ul>
         </div>
     </div>
     <!-- 模态框 -->
@@ -102,6 +136,55 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <!-- 第二个模态框 -->
+    <div class="modal fade btn-add" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">编辑商品</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <div class="form-group">
+                            <input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="proDesc" class="form-control" rows="3" placeholder="请输入商品描述"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="num" class="form-control" placeholder="请输入商品库存">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="price" class="form-control" placeholder="请输入商品价格">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" id="fileUpload" name="pic1" data-url="/product/addProductPic">
+                            <a href="javascript:void(0)" class="btn btn-default">上传图片</a>
+                            <span>提示：必须上传三张图片</span>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" form="form" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    
+    <!-- /.modal -->
 </body>
 
 </html>
@@ -109,5 +192,33 @@
 <script src="./lib/jquery/jquery.min.js"></script>
 <!-- 导入BS文件 -->
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<!-- 分页插件 -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!-- 引入模板引擎 -->
+<script src="./lib/artTemplate/template.js"></script>
+<!-- 定义一个模板 -->
+<script id="template" type="text/html">
+    {{each rows as vlaue i}}
+    <tr>
+        <td>{{i+1}}</td>
+        <td>{{vlaue.proName}}</td>
+        <td>{{vlaue.proDesc}}</td>
+        <td>{{vlaue.num}}</td>
+        <td>{{vlaue.size}}</td>
+        <td>{{vlaue.statu}}</td>
+        <td>
+            <button class="btn btn-danger">下架</button>
+            <button class="btn btn-primary">编辑</button>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+<!-- 表单验证 -->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<!-- 文件上传插件 -->
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
 <!-- 引入公共js样式 -->
 <script src="./js/common.js"></script>
+<!-- 引入自己的js 文件 -->
+<script src="./js/products.js"></script>
